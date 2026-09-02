@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BallisticTracker — Track every shot. Manage every firearm.</title>
-  <meta name="description" content="BallisticTracker is the all-in-one iOS app for serious shooters: a precision ballistic calculator, range session logbook with shot scoring, DOPE cards you confirm against real results, plus firearm inventory, provenance, and insurance tracking." />
+  <title>BallisticTracker — Your DOPE, proven. Range sessions, DOPE cards &amp; ballistics for iPhone</title>
+  <meta name="description" content="BallisticTracker turns a range day into data you can trust: live firing solutions, tap-to-mark target scoring, DOPE cards you confirm against real shots, printable range cards, plus firearm inventory, provenance, and insurance. Coming to the App Store for iPhone &amp; iPad." />
   <meta name="theme-color" content="#0c0e11" />
   <link rel="canonical" href="https://ballistictracker.com/" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -13,14 +13,19 @@
   <!-- Open Graph / social -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ballistictracker.com/" />
-  <meta property="og:title" content="BallisticTracker — Track every shot. Manage every firearm." />
-  <meta property="og:description" content="A precision ballistic calculator, range logbook, and DOPE card system — plus complete inventory, provenance, and insurance tracking. For iPhone & iPad." />
-  <meta property="og:image" content="https://ballistictracker.com/assets/logo.png" />
+  <meta property="og:title" content="BallisticTracker — Your DOPE, proven." />
+  <meta property="og:description" content="Range sessions, tap-to-mark target scoring, DOPE cards you confirm against real shots, printable range cards, and a full ballistic calculator. Coming to the App Store for iPhone &amp; iPad." />
+  <meta property="og:image" content="https://ballistictracker.com/assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="BallisticTracker — Track every shot. Manage every firearm." />
-  <meta name="twitter:description" content="A precision ballistic calculator, range logbook, and DOPE card system — plus inventory, provenance, and insurance tracking. For iPhone & iPad." />
-  <meta name="twitter:image" content="https://ballistictracker.com/assets/logo.png" />
+  <meta name="twitter:title" content="BallisticTracker — Your DOPE, proven." />
+  <meta name="twitter:description" content="Range sessions, DOPE cards you confirm against real shots, printable range cards, and a full ballistic calculator. Coming to the App Store." />
+  <meta name="twitter:image" content="https://ballistictracker.com/assets/og.png" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Saira+Condensed:wght@600;700&display=swap" />
   <link rel="stylesheet" href="styles.css" />
 
   <script type="application/ld+json">
@@ -30,13 +35,53 @@
     "name": "BallisticTracker",
     "operatingSystem": "iOS 26",
     "applicationCategory": "UtilitiesApplication",
-    "description": "All-in-one app for shooters: ballistic calculator, range session logbook with shot scoring, DOPE cards, plus firearm inventory, provenance, and insurance tracking.",
+    "description": "Range sessions with tap-to-mark target scoring, DOPE cards confirmed against real shots, printable range cards, a ballistic calculator with live weather, plus firearm inventory, provenance, and insurance tracking.",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "publisher": { "@type": "Organization", "name": "Vega LLC" }
   }
   </script>
+
+  <!-- Waitlist form loader. -->
+  <script>
+    (function (s, e, n, d, er) {
+      s['Sender'] = er;
+      s[er] = s[er] || function () { (s[er].q = s[er].q || []).push(arguments); }, s[er].l = 1 * new Date();
+      var a = e.createElement(n), m = e.getElementsByTagName(n)[0];
+      a.async = 1; a.src = d; m.parentNode.insertBefore(a, m);
+    })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+    sender('16c1ba04aa9763');
+    // If the form has not rendered after 4 s (blocked script, offline), reveal the email fallback.
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        document.querySelectorAll('.waitlist').forEach(function (w) {
+          var f = w.querySelector('.sender-form-field');
+          if (f && f.children.length === 0) w.classList.add('no-render');
+        });
+      }, 4000);
+    });
+    // Range-card gallery: scale each 640 px card to its grid cell so all four sit in a symmetric 2x2.
+    // Below 72% (phones) the cards stay full size and scroll sideways inside their frame instead.
+    (function () {
+      function fit() {
+        document.querySelectorAll('.gallery .paper-stage').forEach(function (st) {
+          var card = st.querySelector('.paper'); if (!card) return;
+          card.style.transform = ''; st.style.height = ''; st.classList.remove('fitted');
+          var s = st.clientWidth / card.offsetWidth;
+          if (s < 0.72) return;
+          s = Math.min(1, s);
+          card.style.transform = 'scale(' + s + ')';
+          st.style.height = Math.ceil(card.offsetHeight * s) + 'px';
+          st.classList.add('fitted');
+        });
+      }
+      var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fit, 120); });
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fit); else fit();
+      window.addEventListener('load', fit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    })();
+  </script>
 </head>
-<body>
+<body class="pre-launch">
 
   <!-- ============ HEADER ============ -->
   <header class="nav">
@@ -47,11 +92,15 @@
       </a>
       <nav class="nav-links">
         <a class="lnk" href="#range">Range</a>
+        <a class="lnk" href="#cards">Cards</a>
+        <a class="lnk" href="#calculator">Calculator</a>
         <a class="lnk" href="#collection">Collection</a>
-        <a class="lnk" href="#privacy">Privacy</a>
+        <a class="lnk" href="#pricing">Pricing</a>
+        <a class="lnk" href="#partners">Work with us</a>
         <a class="lnk" href="support.html">Support</a>
+        <a class="btn btn-primary cta-waitlist" href="#waitlist">Get early access</a>
         <!-- APP STORE LINK ↓ replace the URL everywhere (search "REPLACE-ME") -->
-        <a class="btn btn-primary" href="https://apps.apple.com/app/idREPLACE-ME"><svg class="apple" viewBox="0 0 384 512" width="15" height="17" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Download</a>
+        <a class="btn btn-primary cta-launched" href="https://apps.apple.com/app/idREPLACE-ME"><svg class="apple" viewBox="0 0 384 512" width="15" height="17" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Download</a>
       </nav>
     </div>
   </header>
@@ -60,54 +109,351 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow"><span class="dot"></span> Now on the App Store · iPhone &amp; iPad · iOS 26</span>
-        <h1>Track every shot.<br /><span class="grad">Manage every firearm.</span></h1>
-        <p class="lede">The all-in-one app for serious shooters — a precision ballistic calculator, range logbook, and DOPE card system, plus complete inventory, provenance, and insurance tracking for your collection.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="https://apps.apple.com/app/idREPLACE-ME"><svg class="apple" viewBox="0 0 384 512" width="15" height="17" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Download on the App Store</a>
-          <a class="btn btn-ghost" href="#range">See what it does</a>
+        <span class="eyebrow cta-waitlist"><span class="dot"></span> Coming to the App Store · iPhone &amp; iPad</span>
+        <span class="eyebrow cta-launched"><span class="dot"></span> Now on the App Store · iPhone &amp; iPad</span>
+        <h1>Your DOPE,<br /><span class="grad">proven.</span></h1>
+        <p class="lede">Live holds for today&#x27;s conditions, tap-to-mark target scoring, and a DOPE card that every session confirms or corrects, until the number you dial is one you proved yourself.</p>
+
+        <div class="waitlist cta-waitlist" id="waitlist">
+          <div class="sender-form-field" data-sender-form-id="epY3pp"></div>
+          <a class="btn btn-primary waitlist-fallback" href="mailto:support@ballistictracker.com?subject=Notify%20me%20when%20BallisticTracker%20launches">Email us to join the waitlist</a>
+          <p class="waitlist-note"><b>One email when it ships.</b> Waitlist members get first access to Founder's Lifetime. No spam, unsubscribe anytime.</p>
         </div>
-        <p class="hero-note">Available for iPhone &amp; iPad. Requires iOS 26 or later.</p>
+        <div class="hero-cta cta-launched">
+          <a class="btn btn-primary" href="https://apps.apple.com/app/idREPLACE-ME"><svg class="apple" viewBox="0 0 384 512" width="15" height="17" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Download on the App Store</a>
+          <a class="btn btn-ghost" href="#range">See a range day</a>
+        </div>
+        <p class="hero-note">For iPhone &amp; iPad. Requires iOS 26 or later.</p>
       </div>
+
       <div class="hero-media">
-        <div class="phone"><img src="assets/screen-ballistic.png" alt="BallisticTracker ballistic calculator screen" /></div>
+        <div class="hero-stack">
+          <div class="phone"><img src="assets/shot-workbench.png" alt="BallisticTracker range session screen showing the live hold for 300 yards" /></div>
+          <div class="paper hero-card" style="padding:12px 14px 10px" role="figure" aria-label="Sample DOPE stock strip generated by the app">
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--card-line);padding-bottom:7px">
+              <div class="ttl" style="font-size:19px;line-height:1">D.O.P.E.</div>
+              <div style="text-align:right;font-size:9.5px;line-height:1.45">
+                REM 700 SPS · .308 WIN · 20&quot; 1:10<br>
+                FGMM 168 GR · 2650 FPS · BC .462 G1 · 100 YD ZERO
+              </div>
+            </div>
+            <table class="d" style="margin-top:8px">
+              <tr><th class="lab" scope="row">Yards</th><th>100</th><th>200</th><th>300</th><th>400</th><th>500</th><th>600</th><th>700</th></tr>
+              <tr><th class="lab" scope="row">Elev MOA</th><td>0.0</td><td>1.9</td><td>4.6</td><td>7.6</td><td>11.0</td><td>14.8</td><td>19.1</td></tr>
+              <tr><th class="lab" scope="row">Clicks ¼</th><td>0</td><td>7</td><td>18</td><td>31</td><td>44</td><td>59</td><td>77</td></tr>
+              <tr><th class="lab" scope="row">Wind 10</th><td>0.3</td><td>0.7</td><td>1.1</td><td>1.7</td><td>2.4</td><td>3.3</td><td>4.4</td></tr>
+            </table>
+            <div style="display:flex;justify-content:space-between;margin-top:7px;align-items:center">
+              <div class="sub">BASELINE 59°F · 29.92 inHg · 50% · 1,180 FT · <b>2,340 FT DA</b></div>
+              <div class="mark">ballistictracker.com</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ RANGE / PRECISION ============ -->
+  <!-- ============ RANGE DAY ============ -->
   <section id="range">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Built for the range</div>
+        <h2>A range day, start to finish.</h2>
+        <p>Every number below comes out of the app's ballistic engine and your own sessions. Here is how a range day goes from the first tap to a card you can trust.</p>
+      </div>
+      <ol class="steps" role="list">
+        <li class="step">
+          <div class="step-copy">
+            <span class="step-num">01</span>
+            <h3>Start a session</h3>
+            <p>Pick your rifle and load, set the distance, and pull in today's weather and location with one tap. That's the setup. You're on the gun.</p>
+          </div>
+          <div class="step-media"><div class="phone"><img src="assets/shot-session-setup.png" alt="Start Session screen with the session name, firearm, and ammo selected" /></div></div>
+        </li>
+        <li class="step">
+          <div class="step-copy">
+            <span class="step-num">02</span>
+            <h3>Read the live hold</h3>
+            <p>See the elevation and windage to dial for today's exact distance and conditions. If the app doesn't have real numbers for your setup, it says so instead of guessing.</p>
+          </div>
+          <div class="step-media"><div class="phone"><img src="assets/shot-workbench.png" alt="Range session screen with the live hold showing elevation and windage to dial" /></div></div>
+        </li>
+        <li class="step">
+          <div class="step-copy">
+            <span class="step-num">03</span>
+            <h3>Mark the target</h3>
+            <p>Photograph the target and tap each hole. The app measures every shot from center for you. No ruler, no calipers, no math at the bench.</p>
+          </div>
+          <div class="step-media"><div class="phone"><img src="assets/shot-markup.png" alt="Shot Scoring in Touch mode with the Photos, Camera, and Mark Target controls for a target photo" /></div></div>
+        </li>
+        <li class="step">
+          <div class="step-copy">
+            <span class="step-num">04</span>
+            <h3>See the group</h3>
+            <p>Mean radius, extreme spread, and group MOA update with every tap, plus your hit rate for the string. Prefer a notebook? Log hits, misses, calls, and corrections by hand.</p>
+          </div>
+          <div class="step-media"><div class="phone"><img src="assets/shot-scoring.png" alt="Shot Scoring screen with the shot table and group analysis statistics" /></div></div>
+        </li>
+        <li class="step">
+          <div class="step-copy">
+            <span class="step-num">05</span>
+            <h3>Build the DOPE card</h3>
+            <p>One tap from the session. The app already knows your load. Pick MOA or MIL, G1 or G7, and your full distance table is ready, tied to the range day that earned it.</p>
+          </div>
+          <div class="step-media"><div class="phone"><img src="assets/shot-dope-builder.png" alt="DOPE Builder with muzzle velocity and ballistic coefficient seeded from the ammo, MOA and G1 selected" /></div></div>
+        </li>
+        <li class="step">
+          <div class="step-copy">
+            <span class="step-num">06</span>
+            <h3>Prove it next trip</h3>
+            <p>Next trip, the app checks the card against what you actually shot. Every distance you confirm earns its check mark. Anything off gets flagged. Every session hardens the card until it's yours, not the computer's.</p>
+          </div>
+          <div class="step-media"><div class="phone"><img src="assets/shot-dope-link.png" alt="DOPE card table with the 100 and 300 yard rows marked field-confirmed by a green check" /></div></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ RANGE CARDS ============ -->
+  <section id="cards">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Print it. Tape it. Shoot it.</div>
+        <h2>Range cards built from your data.</h2>
+        <p>Four cards, built from your own sessions. Two DOPE references for the stock and the bag. Two session records for the bench. They arrive in the range-card update after launch: preview every design free, print and export with Pro.</p>
+      </div>
+      <div class="gallery">
+
+        <figure>
+          <div class="paper-stage">
+            <div class="paper" style="padding:14px 16px 12px">
+              <div style="display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--card-line);padding-bottom:7px">
+                <div class="ttl" style="font-size:19px;line-height:1">D.O.P.E.</div>
+                <div style="text-align:right;font-size:9.5px;line-height:1.45">
+                  REM 700 SPS · .308 WIN · 20&quot; 1:10<br>
+                  FGMM 168 GR · 2650 FPS · BC .462 G1 · 100 YD ZERO
+                </div>
+              </div>
+              <table class="d" style="margin-top:8px">
+                <tr><th class="lab" scope="row">Yards</th><th>100</th><th>200</th><th>300</th><th>400</th><th>500</th><th>600</th><th>700</th></tr>
+                <tr><th class="lab" scope="row">Elev MOA</th><td>0.0</td><td>1.9</td><td>4.6</td><td>7.6</td><td>11.0</td><td>14.8</td><td>19.1</td></tr>
+                <tr><th class="lab" scope="row">Clicks ¼</th><td>0</td><td>7</td><td>18</td><td>31</td><td>44</td><td>59</td><td>77</td></tr>
+                <tr><th class="lab" scope="row">Wind 10</th><td>0.3</td><td>0.7</td><td>1.1</td><td>1.7</td><td>2.4</td><td>3.3</td><td>4.4</td></tr>
+              </table>
+              <div style="display:flex;justify-content:space-between;margin-top:7px;align-items:center">
+                <div class="sub">BASELINE 59°F · 29.92 inHg · 50% · 1,180 FT · <b>2,340 FT DA</b></div>
+                <div class="mark">ballistictracker.com</div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>01 · DOPE stock strip</b><span class="tag pro">Pro to print</span><br>Taped to the stock, read mid-string. Elevation, clicks, and the 10 mph wind column.</figcaption>
+        </figure>
+
+        <figure>
+          <div class="paper-stage">
+            <div class="paper" style="padding:14px 16px 12px">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1.5px solid var(--card-line);padding-bottom:8px">
+                <div><div class="ttl" style="font-size:22px;line-height:1">DOPE Card</div>
+                  <div style="font-size:9px;letter-spacing:.1em;color:#6f6c65;margin-top:3px">300 YD CONFIRMED · 29 AUG 2026</div></div>
+                <div style="text-align:right;font-size:10px;line-height:1.5">
+                  <b>Remington 700 SPS</b> · Vortex Viper PST<br>
+                  .308 Win · FGMM 168 gr · BC .462 G1<br>
+                  2650 fps · 100 yd zero · ¼ MOA click
+                </div>
+              </div>
+              <table class="d" style="margin-top:9px">
+                <tr><th>Yds</th><th>Drop in</th><th>Elev MOA</th><th>Clicks</th><th>W5</th><th>W10</th><th>W15</th><th>TOF s</th><th>Vel fps</th><th>✓</th></tr>
+                <tr><td>100</td><td>0.0</td><td>0.00</td><td>0</td><td>0.16</td><td>0.32</td><td>0.48</td><td>0.113</td><td>2468</td><td class="chk">✓</td></tr>
+                <tr><td>200</td><td>−3.9</td><td>1.86</td><td>7</td><td>0.34</td><td>0.68</td><td>1.02</td><td>0.238</td><td>2295</td><td class="chk">✓</td></tr>
+                <tr><td>300</td><td>−14.4</td><td>4.58</td><td>18</td><td>0.56</td><td>1.12</td><td>1.68</td><td>0.376</td><td>2128</td><td class="chk">✓</td></tr>
+                <tr><td>400</td><td>−32.0</td><td>7.64</td><td>31</td><td>0.84</td><td>1.68</td><td>2.52</td><td>0.531</td><td>1968</td><td class="dash">—</td></tr>
+                <tr><td>500</td><td>−57.5</td><td>10.98</td><td>44</td><td>1.18</td><td>2.35</td><td>3.53</td><td>0.703</td><td>1815</td><td class="dash">—</td></tr>
+                <tr><td>600</td><td>−93.0</td><td>14.80</td><td>59</td><td>1.65</td><td>3.30</td><td>4.95</td><td>0.847</td><td>1719</td><td class="dash">—</td></tr>
+                <tr><td>700</td><td>−140.3</td><td>19.14</td><td>77</td><td>2.21</td><td>4.41</td><td>6.62</td><td>1.012</td><td>1631</td><td class="dash">—</td></tr>
+                <tr><td>800</td><td>−200.3</td><td>23.92</td><td>96</td><td>2.94</td><td>5.87</td><td>8.81</td><td>1.203</td><td>1512</td><td class="dash">—</td></tr>
+                <tr><td>900</td><td>−275.6</td><td>29.25</td><td>117</td><td>3.81</td><td>7.62</td><td>11.43</td><td>1.409</td><td>1401</td><td class="dash">—</td></tr>
+                <tr><td>1000</td><td>−367.9</td><td>35.17</td><td>141</td><td>4.83</td><td>9.65</td><td>14.48</td><td>1.630</td><td>1300</td><td class="dash">—</td></tr>
+              </table>
+              <div style="display:flex;justify-content:space-between;margin-top:8px;align-items:center" class="sub">
+                <div>BASELINE 59°F · 29.92 inHg · 50% RH · 1,180 FT · <b>2,340 FT DA</b> &nbsp;|&nbsp; ✓ = CONFIRMED IN THE FIELD</div>
+                <div class="mark">ballistictracker.com</div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>02 · DOPE full table</b><span class="tag pro">Pro to print</span><br>The range-bag reference. The ✓ column is every distance a real session has confirmed.</figcaption>
+        </figure>
+
+        <figure>
+          <div class="paper-stage">
+            <div class="paper">
+              <div style="border-bottom:1.5px solid var(--card-line);padding:8px 10px;display:flex;justify-content:space-between;align-items:center">
+                <div class="ttl" style="font-size:18px">Range Session</div>
+                <div style="font-size:8.5px;letter-spacing:.14em;border:1px solid #22262a;padding:3px 7px">INDOOR RANGE</div>
+              </div>
+              <div class="hdrgrid" style="grid-template-columns:repeat(3,1fr)">
+                <div class="hcell"><div class="hlab">Date / Time</div><div class="hval">31 Aug 2026 · 6:40 PM</div></div>
+                <div class="hcell"><div class="hlab">Range</div><div class="hval">Indoor lane 4</div></div>
+                <div class="hcell"><div class="hlab">Distance</div><div class="hval">15 yd</div></div>
+              </div>
+              <div class="hdrgrid" style="grid-template-columns:repeat(2,1fr)">
+                <div class="hcell"><div class="hlab">Firearm / Sights</div><div class="hval">Glock 19 · irons</div></div>
+                <div class="hcell"><div class="hlab">Ammunition</div><div class="hval">9mm 115 gr FMJ</div></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 190px">
+                <div style="border-right:1.5px solid var(--card-line);padding:9px 10px">
+                  <table class="d">
+                    <tr><th class="lab" scope="row" style="width:44px">Shot</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+                    <tr><th class="lab" scope="row">Call</th><td>H</td><td>H</td><td>M</td><td>H</td><td>H</td><td>H</td><td>H</td><td>M</td><td>H</td><td>H</td></tr>
+                  </table>
+                  <div class="stats" style="gap:16px;font-size:10px">
+                    <div><span>SHOTS</span><br><b>10</b></div>
+                    <div><span>HITS</span><br><b>8</b></div>
+                    <div><span>HIT RATE</span><br><b>80%</b></div>
+                    <div><span>GROUP</span><br><b>3.9&quot;</b></div>
+                  </div>
+                  <div class="notes">
+                    <span>NOTES</span><br>
+                    Environment not recorded — indoor range. Two low left, working the trigger press.
+                  </div>
+                </div>
+                <div style="padding:9px 10px">
+                  <div style="font-size:7.5px;letter-spacing:.12em;color:#6f6c65">TARGET</div>
+                  <svg viewBox="0 0 110 130" width="100%" style="display:block;margin-top:5px" role="img" aria-label="Silhouette target with ten plotted shots">
+                    <path d="M55 8 c11 0 17 8 17 16 0 5-2 9-4 12 12 4 22 12 24 24 3 16 4 40 4 60 H14 c0-20 1-44 4-60 2-12 12-20 24-24-2-3-4-7-4-12 0-8 6-16 17-16 z" fill="#eceadf" stroke="#22262a" stroke-width="1.4"/>
+                    <ellipse cx="55" cy="72" rx="22" ry="26" fill="none" stroke="#b8b5ac" stroke-width=".9"/>
+                    <ellipse cx="55" cy="72" rx="11" ry="13" fill="none" stroke="#9a978f" stroke-width=".9"/>
+                    <g font-family="IBM Plex Mono, monospace" font-size="6" font-weight="600" fill="#fff" text-anchor="middle">
+                      <circle cx="58" cy="66" r="5" fill="#bd4227"/><text x="58" y="68.2">1</text>
+                      <circle cx="49" cy="74" r="5" fill="#bd4227"/><text x="49" y="76.2">2</text>
+                      <circle cx="34" cy="99" r="5" fill="#7d7a72"/><text x="34" y="101.2">3</text>
+                      <circle cx="62" cy="79" r="5" fill="#bd4227"/><text x="62" y="81.2">4</text>
+                      <circle cx="52" cy="61" r="5" fill="#bd4227"/><text x="52" y="63.2">5</text>
+                      <circle cx="66" cy="70" r="5" fill="#bd4227"/><text x="66" y="72.2">6</text>
+                      <circle cx="45" cy="83" r="5" fill="#bd4227"/><text x="45" y="85.2">7</text>
+                      <circle cx="30" cy="52" r="5" fill="#7d7a72"/><text x="30" y="54.2">8</text>
+                      <circle cx="57" cy="86" r="5" fill="#bd4227"/><text x="57" y="88.2">9</text>
+                      <circle cx="63" cy="60" r="5" fill="#bd4227"/><text x="63" y="62.2">10</text>
+                    </g>
+                  </svg>
+                  <div style="text-align:right;margin-top:4px" class="mark">ballistictracker.com</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>04 · Indoor range card</b><span class="tag free">Free to share</span><br>No wind, no ballistics. Just what you shot and how it went, with the marked target.</figcaption>
+        </figure>
+
+        <figure>
+          <div class="paper-stage">
+            <div class="paper" style="min-width:640px">
+              <div style="border-bottom:1.5px solid var(--card-line);padding:8px 10px;display:flex;justify-content:space-between;align-items:center">
+                <div class="ttl" style="font-size:18px">Range Session</div>
+                <div style="font-size:9px;letter-spacing:.1em;color:#6f6c65">RIDGE ROAD · SESSION 14</div>
+              </div>
+              <div class="hdrgrid" style="grid-template-columns:repeat(6,1fr)">
+                <div class="hcell"><div class="hlab">Date</div><div class="hval">29 Aug 2026</div></div>
+                <div class="hcell"><div class="hlab">Time</div><div class="hval">9:15 AM</div></div>
+                <div class="hcell"><div class="hlab">Location</div><div class="hval">Ridge Road</div></div>
+                <div class="hcell"><div class="hlab">Rifle / Scope</div><div class="hval">700 SPS / PST</div></div>
+                <div class="hcell"><div class="hlab">Ammunition</div><div class="hval">FGMM 168</div></div>
+                <div class="hcell"><div class="hlab">Distance</div><div class="hval">300 yd</div></div>
+              </div>
+              <div class="hdrgrid" style="grid-template-columns:repeat(7,1fr)">
+                <div class="hcell"><div class="hlab">Altitude</div><div class="hval">1,180 ft</div></div>
+                <div class="hcell"><div class="hlab">Humidity</div><div class="hval">54%</div></div>
+                <div class="hcell"><div class="hlab">Temp</div><div class="hval">71 °F</div></div>
+                <div class="hcell"><div class="hlab">Pressure</div><div class="hval">29.84 inHg</div></div>
+                <div class="hcell" style="background:var(--card-fill)"><div class="hlab">Density Alt</div><div class="hval">2,340 ft</div></div>
+                <div class="hcell"><div class="hlab">Mirage</div><div class="hval">Light</div></div>
+                <div class="hcell"><div class="hlab">Light</div><div class="hval">Overcast</div></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 220px">
+                <div style="border-right:1.5px solid var(--card-line);padding:9px 10px">
+                  <table class="d">
+                    <tr><th class="lab" scope="row" style="width:52px">Shot</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+                    <tr><th class="lab" scope="row">Elev</th><td>4.6</td><td>4.6</td><td>4.6</td><td>4.6</td><td>4.6</td><td>4.6</td><td>4.6</td><td>4.6</td><td class="dash">·</td><td class="dash">·</td></tr>
+                    <tr><th class="lab" scope="row">Wind</th><td>0.9R</td><td>0.9R</td><td>0.9R</td><td>0.9R</td><td>1.1R</td><td>1.1R</td><td>1.1R</td><td>1.1R</td><td class="dash">·</td><td class="dash">·</td></tr>
+                    <tr><th class="lab" scope="row">Call</th><td>H</td><td>H</td><td>H</td><td>H</td><td>H</td><td>H</td><td>H</td><td>H</td><td class="dash">·</td><td class="dash">·</td></tr>
+                  </table>
+                  <div class="stats">
+                    <div><span>MPI</span><br><b>0.33&quot; R · 0.35&quot; ↑</b></div>
+                    <div><span>MEAN RADIUS</span><br><b>0.76&quot;</b></div>
+                    <div><span>EXTREME SPREAD</span><br><b>1.68&quot;</b></div>
+                    <div><span>GROUP</span><br><b>0.53 MOA</b></div>
+                  </div>
+                  <div class="notes">
+                    <span>NOTES</span><br>
+                    Prone, bipod and rear bag. Confirmed 300 against the DOPE card — dialed 4.6, card said 4.58.
+                    Wind picked up from 8 to 10 mph on the second half of the string.
+                  </div>
+                </div>
+                <div style="padding:9px 10px">
+                  <div style="display:flex;justify-content:space-between;font-size:7.5px;letter-spacing:.12em;color:#6f6c65">
+                    <span>TARGET · 8 SHOTS</span><span>WIND 8 MPH @ 90° R</span>
+                  </div>
+                  <svg viewBox="0 0 120 120" width="100%" style="display:block;margin-top:5px" role="img" aria-label="Target with eight plotted shots">
+                    <rect x="5" y="5" width="110" height="110" fill="none" stroke="#22262a" stroke-width="1.5"/>
+                    <circle cx="60" cy="60" r="45" fill="none" stroke="#b8b5ac" stroke-width=".8"/>
+                    <circle cx="60" cy="60" r="30" fill="none" stroke="#b8b5ac" stroke-width=".8"/>
+                    <circle cx="60" cy="60" r="15" fill="none" stroke="#9a978f" stroke-width=".8"/>
+                    <line x1="60" y1="48" x2="60" y2="72" stroke="#6f6c65" stroke-width=".8"/>
+                    <line x1="48" y1="60" x2="72" y2="60" stroke="#6f6c65" stroke-width=".8"/>
+                    <g font-family="IBM Plex Mono, monospace" font-size="6.5" font-weight="600" fill="#fff" text-anchor="middle">
+                      <circle cx="74.2" cy="43.7" r="5.4" fill="#bd4227"/><text x="74.2" y="46">1</text>
+                      <circle cx="58.6" cy="43.6" r="5.4" fill="#bd4227"/><text x="58.6" y="45.9">2</text>
+                      <circle cx="89.1" cy="44.5" r="5.4" fill="#bd4227"/><text x="89.1" y="46.8">3</text>
+                      <circle cx="50.1" cy="65.7" r="5.4" fill="#bd4227"/><text x="50.1" y="68">4</text>
+                      <circle cx="73.2" cy="35.1" r="5.4" fill="#bd4227"/><text x="73.2" y="37.4">5</text>
+                      <circle cx="63.8" cy="42.1" r="5.4" fill="#bd4227"/><text x="63.8" y="44.4">6</text>
+                      <circle cx="98.0" cy="49.8" r="5.4" fill="#bd4227"/><text x="98" y="52.1">7</text>
+                      <circle cx="53.0" cy="72.2" r="5.4" fill="#bd4227"/><text x="53" y="74.5">8</text>
+                    </g>
+                    <rect x="42" y="98" width="36" height="9" fill="none" stroke="#9a978f" stroke-width=".6"/>
+                    <text x="60" y="104.6" font-family="IBM Plex Mono, monospace" font-size="5" fill="#6f6c65" text-anchor="middle">1 IN GRID</text>
+                  </svg>
+                  <div style="text-align:right;margin-top:4px" class="mark">ballistictracker.com</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>03 · Outdoor field log</b><span class="tag pro">Pro to print</span><br>Conditions, what you dialed, where it landed. Group stats are computed from your marked target, not measured by hand.</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CALCULATOR ============ -->
+  <section id="calculator">
     <div class="wrap">
       <div class="split">
         <div class="split-copy">
-          <div class="kicker">Built for the range</div>
-          <h2>Dial it in. Log it. Prove it.</h2>
-          <p class="muted" style="font-size:18px;">From the firing solution to the scorecard, BallisticTracker turns a range day into data you can trust the next time you're behind the rifle.</p>
+          <div class="kicker">The math underneath</div>
+          <h2>A firing solution for every distance.</h2>
+          <p class="muted" style="font-size:18px;">The same engine behind your live hold and your DOPE cards, ready any time you need a number, with today's weather and your own rifle and load.</p>
           <div class="cards" style="margin-top:26px;">
             <div class="card">
-              <div class="ico">🎯</div>
-              <h3>Ballistic calculator</h3>
-              <p>Compute elevation and windage holds from your firearm, ammo, and live weather conditions.</p>
+              <div class="ico" aria-hidden="true">🎯</div>
+              <h3>Firing solutions</h3>
+              <p>Elevation and windage holds from your firearm, ammo, and conditions, in MOA or MIL, with G1 or G7 drag models.</p>
             </div>
             <div class="card">
-              <div class="ico">📍</div>
-              <h3>Range sessions</h3>
-              <p>Photograph your target, tap to mark each shot, and get instant group analysis — mean radius, extreme spread, and group MOA.</p>
+              <div class="ico" aria-hidden="true">🔭</div>
+              <h3>Reticle &amp; trajectory</h3>
+              <p>See the hold on a reticle, walk the trajectory chart by distance, and know where your load goes subsonic.</p>
             </div>
             <div class="card">
-              <div class="ico">📊</div>
-              <h3>DOPE cards</h3>
-              <p>Build DOPE cards from your data, then confirm them against real results. Green check when it holds, a flag when it's time to re-zero.</p>
-            </div>
-            <div class="card">
-              <div class="ico">🌤️</div>
+              <div class="ico" aria-hidden="true">🌤️</div>
               <h3>Weather &amp; GPS</h3>
-              <p>Auto-pull live weather and your range location for every session — or enter any value by hand.</p>
+              <p>Live temperature, humidity, pressure, wind, and altitude auto-filled for your location, or enter any value by hand.</p>
             </div>
           </div>
         </div>
         <div class="split-media">
-          <div class="phone"><img src="assets/screen-dashboard.png" alt="BallisticTracker dashboard / inventory screen" /></div>
+          <div class="phones">
+            <div class="phone"><img src="assets/shot-reticle.png" alt="Ballistic calculator reticle view showing an elevation and windage hold" /></div>
+            <div class="phone"><img src="assets/shot-trajectory.png" alt="Ballistic calculator trajectory chart with supersonic, transonic, and subsonic zones by distance" /></div>
+          </div>
         </div>
       </div>
     </div>
@@ -118,32 +464,32 @@
     <div class="wrap">
       <div class="split flip">
         <div class="split-media">
-          <div class="phone"><img src="assets/screen-provenance.png" alt="BallisticTracker provenance record screen" /></div>
+          <div class="phone"><img src="assets/shot-dashboard.png" alt="BallisticTracker dashboard with Ballistic Calcs, Inventory, Provenance, Insurance, and Range Sessions tiles" /></div>
         </div>
         <div class="split-copy">
           <div class="kicker">Know what you own</div>
           <h2>Your collection, documented.</h2>
-          <p class="muted" style="font-size:18px;">More than a calculator — a permanent, private record of every firearm you own and everything that matters about it.</p>
+          <p class="muted" style="font-size:18px;">More than a range tool. A private record of every firearm you own and everything that matters about it.</p>
           <div class="cards" style="margin-top:26px;">
             <div class="card">
-              <div class="ico">🗂️</div>
+              <div class="ico" aria-hidden="true">🗂️</div>
               <h3>Inventory</h3>
-              <p>Catalog firearms, ammunition, and accessories with photos and full detail.</p>
+              <p>Firearms, ammunition, accessories, and supplies with photos and full detail.</p>
             </div>
             <div class="card">
-              <div class="ico">📜</div>
+              <div class="ico" aria-hidden="true">📷</div>
+              <h3>Barcode scan</h3>
+              <p>Scan the box. The ammo lands in your inventory with its ballistic data, no typing.</p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">📜</div>
               <h3>Provenance</h3>
-              <p>Keep a lasting record of each firearm's history and documentation.</p>
+              <p>History, documents, ID cards, and certifications, with expiry alerts.</p>
             </div>
             <div class="card">
-              <div class="ico">🛡️</div>
+              <div class="ico" aria-hidden="true">🛡️</div>
               <h3>Insurance</h3>
-              <p>Track coverage and policies so your collection is always accounted for.</p>
-            </div>
-            <div class="card">
-              <div class="ico">📄</div>
-              <h3>PDF export</h3>
-              <p>Export sessions, DOPE cards, and records as polished PDFs to print or share with a coach.</p>
+              <p>Policies and insured items so the collection is always accounted for.</p>
             </div>
           </div>
         </div>
@@ -169,14 +515,153 @@
     </div>
   </section>
 
+  <!-- ============ PRICING ============ -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head center">
+        <div class="kicker">Simple plans</div>
+        <h2>Free to start.</h2>
+        <p>Three ways in. We're still shaping what each one includes, so consider this the outline, not the fine print.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <h3>Free</h3>
+          <p class="plan-sub">Start here, free.</p>
+        </div>
+        <div class="plan">
+          <h3>Pro</h3>
+          <p class="plan-sub">The full, growing BallisticTracker, by subscription.</p>
+        </div>
+        <div class="plan featured">
+          <span class="plan-tag cta-waitlist">Waitlist gets first look</span><span class="plan-tag cta-launched">Limited run</span>
+          <h3>Founder's Lifetime</h3>
+          <p class="plan-sub">One payment. A limited number of memberships, with a few limits Pro won't have.</p>
+        </div>
+      </div>
+      <p class="plans-note">(We're still narrowing down exactly what each tier includes and what it will cost.) <span class="cta-waitlist">Join the waitlist to hear first when the limited Founder's Lifetime run opens.</span></p>
+    </div>
+  </section>
+
+  <!-- ============ WHERE THIS IS GOING ============ -->
+  <section id="next" class="forward">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Where this is going</div>
+        <h2>Less typing at the bench. More proof on the card.</h2>
+        <p>The app in review is the foundation. Here is what we build next. Every item started as a wish at our own bench. Every item keeps one promise: your records stay on your phone unless you choose otherwise, and nothing spends your money quietly.</p>
+      </div>
+      <div class="cards">
+            <div class="card">
+              <div class="ico" aria-hidden="true">📷</div>
+              <h3>AI help at the bench</h3>
+              <p>Coming: aim the camera at an ammo box, no barcode needed, and the load reads in. Photograph a target and it finds the holes. You shoot. It types.</p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">🔒</div>
+              <h3>Your data stays yours</h3>
+              <p>Sessions, cards, and inventory live on your device. Coming AI help will not change that. Cloud will run only when it earns its cost. You will see the receipt.</p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">📈</div>
+              <h3>Your accuracy, over time</h3>
+              <p>Coming: see how your groups trend across sessions and conditions, so improvement shows up as a line on a chart, not a feeling.</p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">🖨️</div>
+              <h3>Range cards you can print</h3>
+              <p>Coming after launch: DOPE strips for the stock, a full table for the bag, and session cards for the bench. Preview every design free. Print with Pro.</p>
+            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE MISSING MIDDLE ============ -->
+  <section id="router">
+    <div class="wrap">
+      <div class="router-band">
+        <div class="kicker">The missing middle</div>
+        <h2>AI that knows when to stay local.</h2>
+        <p class="lead">Most AI apps pick a side: everything on the device, or everything in the cloud with your data and your bill riding along. We built the layer in between. Local when it&#x27;s good enough. Cloud when it counts. Receipts either way.</p>
+        <p class="nate">The gap is public knowledge by now. AI runs on your phone and AI runs in the cloud, but nobody routes work between them cleanly, nobody has made local AI feel finished, and nobody shows what a hybrid setup costs or whether local quality held. We built our answer to that gap.</p>
+        <p class="router-line">Local when it's good enough. <b>Cloud when it counts.</b> Receipts either way.</p>
+        <div class="promises">
+          <div class="promise">
+            <div class="num">1</div>
+            <h3>It never spends your money silently</h3>
+            <p>Local is the default. The cloud runs only when you, or a setting you can read, say so. Every time, it shows on the receipt.</p>
+          </div>
+          <div class="promise">
+            <div class="num">2</div>
+            <h3>Files can&#x27;t order the cloud</h3>
+            <p>Only what you type counts as a command. Nothing inside a document or a tool result can push your private work off your device.</p>
+          </div>
+          <div class="promise">
+            <div class="num">3</div>
+            <h3>Everything is written down</h3>
+            <p>Every cloud decision is logged with the reason it was made. When you disagree, you change a setting instead of arguing with a black box.</p>
+          </div>
+        </div>
+        <p class="closing">BallisticTracker&#x27;s coming AI features will run on that layer. Reading an ammo box, finding holes in a target, checking a load: on your device by default, in the cloud only when it clearly earns its cost. You will always see what it cost. That is where we are headed, and we will say so when it ships.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK WITH US ============ -->
+  <section id="partners">
+    <div class="wrap">
+      <div class="partners">
+        <div class="head">
+          <div>
+            <div class="kicker">Work with us</div>
+            <h2>Small company. Fast decisions. We answer our own email.</h2>
+          </div>
+          <p class="body">BallisticTracker is built for shooters who show up with a plan, log every round, and confirm their data. They are the people who shoot at your range, take your instruction, and buy your ammo and glass. We will reach them without reaching into their data: no ads, no cross-app tracking, no selling who they are. We are pre-launch, so the people who come in first get the most say in what we build.</p>
+        </div>
+        <div class="cards">
+            <div class="card">
+              <div class="ico" aria-hidden="true">🎯</div>
+              <h3>Ranges</h3>
+              <p>Coming: shooters who start a session near you will see your range and your offers. From us directly, never through an ad network or a tracker.</p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">🧑‍🏫</div>
+              <h3>Coaches and instructors</h3>
+              <p>Students can hand you a session report with the marked target, group stats, and the DOPE rows they have confirmed. Tell us what else you need from it.</p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">📦</div>
+              <h3>Ammo and optics makers</h3>
+              <p>Your loads in the catalog shooters pick from at the bench, with numbers they confirm on paper. Glass is next. Help us get your data right from day one.</p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">🤝</div>
+              <h3>Everyone else</h3>
+              <p>Retailers, clubs, match directors, app makers. If you serve shooters and want in early, tell us what you have in mind.</p>
+            </div>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:support@ballistictracker.com?subject=Working%20with%20BallisticTracker">Start the conversation</a>
+          <p>Email support@ballistictracker.com with one line about what you do. A person answers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ FINAL CTA ============ -->
   <section class="cta-final">
     <div class="wrap">
       <div class="box">
-        <span class="eyebrow"><span class="dot"></span> Available now</span>
-        <h2>Get on the range with better data.</h2>
-        <p>Download BallisticTracker and bring real data to your next range day.</p>
-        <a class="btn btn-primary" href="https://apps.apple.com/app/idREPLACE-ME"><svg class="apple" viewBox="0 0 384 512" width="15" height="17" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Download on the App Store</a>
+        <span class="eyebrow cta-waitlist"><span class="dot"></span> Coming soon</span>
+        <span class="eyebrow cta-launched"><span class="dot"></span> Available now</span>
+        <h2 class="cta-waitlist">Get on the list before the range opens.</h2>
+        <h2 class="cta-launched">Get on the range with better data.</h2>
+        <p class="cta-waitlist">One email when BallisticTracker hits the App Store. Founder's Lifetime goes to the waitlist first.</p>
+        <p class="cta-launched">Download BallisticTracker and bring real data to your next range day.</p>
+        <div class="waitlist cta-waitlist" style="display:inline-block;text-align:left;">
+          <div class="sender-form-field" data-sender-form-id="epY3pp"></div>
+          <a class="btn btn-primary waitlist-fallback" href="#waitlist">Join the waitlist</a>
+        </div>
+        <a class="btn btn-primary cta-launched" href="https://apps.apple.com/app/idREPLACE-ME"><svg class="apple" viewBox="0 0 384 512" width="15" height="17" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Download on the App Store</a>
       </div>
     </div>
   </section>
@@ -187,11 +672,16 @@
       <div class="foot-grid">
         <div>
           <div class="foot-brand"><img src="assets/logo.png" alt="" /> Ballistic<span style="color:var(--accent)">Tracker</span></div>
-          <p style="margin:12px 0 0;max-width:34ch;">A precision ballistics and collection-management app for iPhone &amp; iPad.</p>
+          <p style="margin:12px 0 0;max-width:34ch;">Range sessions, DOPE cards, and a ballistic calculator, plus collection management, for iPhone &amp; iPad.</p>
         </div>
         <div class="foot-links">
           <a href="#range">Range</a>
+          <a href="#cards">Cards</a>
+          <a href="#calculator">Calculator</a>
           <a href="#collection">Collection</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#next">What's next</a>
+          <a href="#partners">Work with us</a>
           <a href="privacy.html">Privacy</a>
           <a href="support.html">Support</a>
           <a href="mailto:support@ballistictracker.com">Contact</a>
