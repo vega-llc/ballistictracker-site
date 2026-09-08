@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BallisticTracker — Your DOPE, proven. Range sessions, DOPE cards &amp; ballistics for iPhone</title>
-  <meta name="description" content="BallisticTracker turns a range day into data you can trust: live firing solutions, tap-to-mark target scoring, DOPE cards you confirm against real shots, printable range cards, plus firearm inventory, provenance, and insurance. Coming to the App Store for iPhone &amp; iPad." />
-  <meta name="theme-color" content="#0c0e11" />
+  <title>BallisticTracker | Make every range day count.</title>
+  <meta name="description" content="Range sessions, target scoring, ballistics, DOPE cards, and collection records for hunters and sport shooters. Coming to the App Store for iPhone and iPad." />
+  <meta name="theme-color" content="#172b22" />
   <link rel="canonical" href="https://ballistictracker.com/" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/favicon.png" />
@@ -13,19 +13,19 @@
   <!-- Open Graph / social -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ballistictracker.com/" />
-  <meta property="og:title" content="BallisticTracker — Your DOPE, proven." />
-  <meta property="og:description" content="Range sessions, tap-to-mark target scoring, DOPE cards you confirm against real shots, printable range cards, and a full ballistic calculator. Coming to the App Store for iPhone &amp; iPad." />
+  <meta property="og:title" content="BallisticTracker — Make every range day count." />
+  <meta property="og:description" content="Range sessions, target scoring, ballistics, DOPE cards, and collection records for hunters and sport shooters. Coming to the App Store for iPhone and iPad." />
   <meta property="og:image" content="https://ballistictracker.com/assets/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="BallisticTracker — Your DOPE, proven." />
-  <meta name="twitter:description" content="Range sessions, DOPE cards you confirm against real shots, printable range cards, and a full ballistic calculator. Coming to the App Store." />
+  <meta name="twitter:title" content="BallisticTracker — Make every range day count." />
+  <meta name="twitter:description" content="Range sessions, target scoring, ballistics, DOPE cards, and collection records for hunters and sport shooters. Coming to the App Store for iPhone and iPad." />
   <meta name="twitter:image" content="https://ballistictracker.com/assets/og.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Saira+Condensed:wght@600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Saira+Condensed:wght@600;700;800&display=swap" />
   <link rel="stylesheet" href="styles.css" />
 
   <script type="application/ld+json">
@@ -35,194 +35,90 @@
     "name": "BallisticTracker",
     "operatingSystem": "iOS 26",
     "applicationCategory": "UtilitiesApplication",
-    "description": "Range sessions with tap-to-mark target scoring, DOPE cards confirmed against real shots, printable range cards, a ballistic calculator with live weather, plus firearm inventory, provenance, and insurance tracking.",
+    "description": "Range sessions with tap-to-mark target scoring, DOPE cards confirmed against real shots, a ballistic calculator with live weather, and firearm inventory, provenance, and insurance records. Printable range cards are planned for an update after launch.",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "publisher": { "@type": "Organization", "name": "Vega LLC" }
   }
   </script>
 
-  <!-- Waitlist form loader. -->
-  <script>
-    (function (s, e, n, d, er) {
-      s['Sender'] = er;
-      s[er] = s[er] || function () { (s[er].q = s[er].q || []).push(arguments); }, s[er].l = 1 * new Date();
-      var a = e.createElement(n), m = e.getElementsByTagName(n)[0];
-      a.async = 1; a.src = d; m.parentNode.insertBefore(a, m);
-    })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
-    sender('16c1ba04aa9763');
-    // If the form has not rendered after 4 s (blocked script, offline), reveal the email fallback.
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        document.querySelectorAll('.waitlist').forEach(function (w) {
-          var f = w.querySelector('.sender-form-field');
-          if (f && f.children.length === 0) w.classList.add('no-render');
-        });
-      }, 4000);
-    });
-    // Range-card gallery: scale each 640 px card to its grid cell so all four sit in a symmetric 2x2.
-    // Below 72% (phones) the cards stay full size and scroll sideways inside their frame instead.
-    (function () {
-      function fit() {
-        document.querySelectorAll('.gallery .paper-stage').forEach(function (st) {
-          var card = st.querySelector('.paper'); if (!card) return;
-          card.style.transform = ''; st.style.height = ''; st.classList.remove('fitted');
-          var s = st.clientWidth / card.offsetWidth;
-          if (s < 0.72) return;
-          s = Math.min(1, s);
-          card.style.transform = 'scale(' + s + ')';
-          st.style.height = Math.ceil(card.offsetHeight * s) + 'px';
-          st.classList.add('fitted');
-        });
-      }
-      var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fit, 120); });
-      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fit); else fit();
-      window.addEventListener('load', fit);
-      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-    })();
-  </script>
+  <link rel="preload" as="image" href="assets/field-hero.webp" media="(min-width: 701px)" />
+  <script src="script.js" defer></script>
 </head>
 <body class="pre-launch">
-
-  <!-- ============ HEADER ============ -->
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="/">
-        <img src="assets/logo.png" alt="BallisticTracker logo" />
-        <span>Ballistic<b>Tracker</b></span>
-      </a>
-      <nav class="nav-links">
-        <a class="lnk" href="#range">Range</a>
-        <a class="lnk" href="#cards">Cards</a>
-        <a class="lnk" href="#calculator">Calculator</a>
-        <a class="lnk" href="#collection">Collection</a>
-        <a class="lnk" href="#pricing">Pricing</a>
-        <a class="lnk" href="#partners">Work with us</a>
-        <a class="lnk" href="support.html">Support</a>
-        <a class="btn btn-primary cta-waitlist" href="#waitlist">Get early access</a>
-        <!-- APP STORE LINK ↓ replace the URL everywhere (search "REPLACE-ME") -->
-        <a class="btn btn-primary cta-launched" href="https://apps.apple.com/app/idREPLACE-ME"><svg class="apple" viewBox="0 0 384 512" width="15" height="17" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Download</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow cta-waitlist"><span class="dot"></span> Coming to the App Store · iPhone &amp; iPad</span>
-        <span class="eyebrow cta-launched"><span class="dot"></span> Now on the App Store · iPhone &amp; iPad</span>
-        <h1>Your DOPE,<br /><span class="grad">proven.</span></h1>
-        <p class="lede">Live holds for today&#x27;s conditions, tap-to-mark target scoring, and a DOPE card that every session confirms or corrects, until the number you dial is one you proved yourself.</p>
-
-        <div class="waitlist cta-waitlist" id="waitlist">
-          <div class="sender-form-field" data-sender-form-id="epY3pp"></div>
-          <a class="btn btn-primary waitlist-fallback" href="mailto:support@ballistictracker.com?subject=Notify%20me%20when%20BallisticTracker%20launches">Email us to join the waitlist</a>
-          <p class="waitlist-note"><b>One email when it ships.</b> Waitlist members get first access to Founder's Lifetime. No spam, unsubscribe anytime.</p>
-        </div>
-        <div class="hero-cta cta-launched">
-          <a class="btn btn-primary" href="https://apps.apple.com/app/idREPLACE-ME"><svg class="apple" viewBox="0 0 384 512" width="15" height="17" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Download on the App Store</a>
-          <a class="btn btn-ghost" href="#range">See a range day</a>
-        </div>
-        <p class="hero-note">For iPhone &amp; iPad. Requires iOS 26 or later.</p>
-      </div>
-
-      <div class="hero-media">
-        <div class="hero-stack">
-          <div class="phone"><img src="assets/shot-workbench.png" alt="BallisticTracker range session screen showing the live hold for 300 yards" /></div>
-          <div class="paper hero-card" style="padding:12px 14px 10px" role="figure" aria-label="Sample DOPE stock strip generated by the app">
-            <div style="display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--card-line);padding-bottom:7px">
-              <div class="ttl" style="font-size:19px;line-height:1">D.O.P.E.</div>
-              <div style="text-align:right;font-size:9.5px;line-height:1.45">
-                REM 700 SPS · .308 WIN · 20&quot; 1:10<br>
-                FGMM 168 GR · 2650 FPS · BC .462 G1 · 100 YD ZERO
-              </div>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap nav-inner">
+<a class="brand" href="/" aria-label="BallisticTracker home"><img src="assets/logo.png" alt="" width="36" height="36"><span>Ballistic<b>Tracker</b><small>PREPARE. RECORD. IMPROVE.</small></span></a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
+<nav id="primary-nav" class="nav-links" aria-label="Main navigation">
+<a class="lnk" href="#range">The range experience</a><a class="lnk" href="#collection">Your collection</a><a class="lnk" href="#pricing">Plans</a><a class="lnk" href="support.html">Support</a>
+<a class="btn btn-primary cta-waitlist" href="#waitlist">Get early access <span aria-hidden="true">↗</span></a><a class="btn btn-primary cta-launched" href="https://apps.apple.com/app/idREPLACE-ME">Download on the App Store <span aria-hidden="true">↗</span></a>
+</nav></div></header><main id="main">
+<section class="hero" aria-labelledby="hero-heading">
+<picture class="hero-landscape"><source media="(max-width: 700px)" srcset="assets/field-hero-mobile.webp"><img src="assets/field-hero.webp" alt="" fetchpriority="high" width="1672" height="941"></picture>
+<div class="hero-shade"></div>
+<div class="wrap hero-grid">
+<div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span><span class="cta-waitlist">COMING TO iPHONE &amp; iPAD</span><span class="cta-launched">AVAILABLE FOR iPHONE &amp; iPAD</span></p>
+<h1 id="hero-heading">Make every<br>range day<br><em>count.</em></h1>
+<p class="lede">From your first group to your next season. Bring your gear, your range sessions, and your hard-earned data together.</p>
+<div class="hero-actions"><a class="btn btn-primary cta-waitlist" href="#waitlist">Get early access <span aria-hidden="true">↗</span></a><a class="btn btn-primary cta-launched" href="https://apps.apple.com/app/idREPLACE-ME">Download on the App Store <span aria-hidden="true">↗</span></a><a class="text-link" href="#range">Explore the app <span aria-hidden="true">↓</span></a></div>
+<p class="hero-note">Built for iPhone &amp; iPad · iOS 26 or later</p>
+</div>
+<div class="hero-media"><div class="orbital" aria-hidden="true"></div>
+<div class="phone hero-phone"><img src="assets/shot-workbench.png" alt="BallisticTracker app showing a range session with live hold, conditions, and shot scoring" width="640" height="1391"></div>
+<div class="field-note"><span class="field-note-check" aria-hidden="true">✓</span><div><small>YOUR DATA. YOUR PROGRESS.</small><strong>Every session tells a story.</strong><span>Keep the details that make the difference.</span></div></div>
+<span class="hero-side-label">THE NEXT TRIP STARTS HERE</span>
+</div>
+</div><div class="wrap hero-bottom"><span>BUILT FOR THE RANGE. READY FOR THE SEASON.</span><a href="#field-guide" aria-label="Discover who BallisticTracker is for">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
+</section>
+<div class="utility-strip"><div class="wrap"><span><i aria-hidden="true">◎</i> Range sessions &amp; scoring</span><span><i aria-hidden="true">⌁</i> Ballistics &amp; DOPE cards</span><span><i aria-hidden="true">▦</i> Your collection, organized</span><a href="#privacy"><i aria-hidden="true">◇</i> Your records. Your control.</a></div></div>
+<section id="field-guide" class="audience-section"><div class="wrap">
+<div class="section-heading"><div><p class="kicker">01 / However you spend your time outside</p><h2>Your pursuit.<br>Your progress.</h2></div><p>Different reasons to head out.<br> The same drive to get better.</p></div>
+<div class="audiences">
+<a class="audience" href="#range"><span class="audience-index">01 / THE HUNTER</span><h3>The season starts<br>at the range.</h3><p>Get to know your setup before opening day. Keep your range notes, confirmed DOPE, and gear records together.</p><span class="audience-link">Prepare for the season <b aria-hidden="true">↗</b></span></a>
+<a class="audience" href="#calculator"><span class="audience-index">02 / THE DEDICATED SHOOTER</span><h3>Bring more than<br>your best guess.</h3><p>From weekend practice to competition preparation, record the conditions, measure the group, and confirm your data.</p><span class="audience-link">Know your numbers <b aria-hidden="true">↗</b></span></a>
+<a class="audience" href="#range"><span class="audience-index">03 / THE NEW SHOOTER</span><h3>Start curious.<br>Keep getting better.</h3><p>Your first range day deserves a record, too. Pick your setup, log your session, and learn from what you see.</p><span class="audience-link">See how it works <b aria-hidden="true">↗</b></span></a>
+</div></div></section>
+<section id="range" class="range-section"><div class="wrap"><div class="section-heading"><div><p class="kicker">02 / Your range day, connected</p><h2>A little more intention.<br>A lot more insight.</h2></div><p>From the first setup to the next trip.<br> Follow a session through the app.</p></div><div class="range-tour"><div class="tour-tabs" aria-label="Range day steps"><button type="button" class="tour-tab" id="step-tab-0" data-step="0"><span>01</span>Set up</button><button type="button" class="tour-tab" id="step-tab-1" data-step="1"><span>02</span>Read the hold</button><button type="button" class="tour-tab" id="step-tab-2" data-step="2"><span>03</span>Mark the target</button><button type="button" class="tour-tab" id="step-tab-3" data-step="3"><span>04</span>See the group</button><button type="button" class="tour-tab" id="step-tab-4" data-step="4"><span>05</span>Build your DOPE</button><button type="button" class="tour-tab" id="step-tab-5" data-step="5"><span>06</span>Confirm it</button></div><div class="tour-panels"><div class="tour-panel" id="step-panel-0" data-panel="0"><div class="tour-copy"><span class="oversized-num" aria-hidden="true">01</span><p class="kicker">THE RANGE EXPERIENCE / 01</p><h3>Start a session.</h3><p>Pick your rifle and load, set the distance, and pull in today's weather and location with one tap. That's the setup. You're on the gun.</p><div class="tour-takeaway"><span aria-hidden="true">↳</span> Your firearm. Your load. Today’s conditions.</div><a class="text-link" href="#cards">Meet your range cards <span aria-hidden="true">↗</span></a></div><div class="tour-media"><span class="screen-caption">A LOOK INSIDE BALLISTICTRACKER</span><div class="phone"><img src="assets/shot-session-setup.png" alt="Start Session screen with the session name, firearm, and ammo selected" loading="lazy" width="640" height="1391" /></div></div></div><div class="tour-panel" id="step-panel-1" data-panel="1"><div class="tour-copy"><span class="oversized-num" aria-hidden="true">02</span><p class="kicker">THE RANGE EXPERIENCE / 02</p><h3>Read the live hold.</h3><p>See the elevation and windage to dial for today's exact distance and conditions. If the app doesn't have real numbers for your setup, it says so instead of guessing.</p><div class="tour-takeaway"><span aria-hidden="true">↳</span> Elevation and windage, in one clear view.</div><a class="text-link" href="#cards">Meet your range cards <span aria-hidden="true">↗</span></a></div><div class="tour-media"><span class="screen-caption">A LOOK INSIDE BALLISTICTRACKER</span><div class="phone"><img src="assets/shot-workbench.png" alt="Range session screen with the live hold showing elevation and windage to dial" loading="lazy" width="640" height="1391" /></div></div></div><div class="tour-panel" id="step-panel-2" data-panel="2"><div class="tour-copy"><span class="oversized-num" aria-hidden="true">03</span><p class="kicker">THE RANGE EXPERIENCE / 03</p><h3>Mark the target.</h3><p>Photograph the target and tap each hole. The app measures every shot from center for you. No ruler, no calipers, no math at the bench.</p><div class="tour-takeaway"><span aria-hidden="true">↳</span> A target photo becomes a useful record.</div><a class="text-link" href="#cards">Meet your range cards <span aria-hidden="true">↗</span></a></div><div class="tour-media"><span class="screen-caption">A LOOK INSIDE BALLISTICTRACKER</span><div class="phone"><img src="assets/shot-markup.png" alt="Shot Scoring in Touch mode with the Photos, Camera, and Mark Target controls for a target photo" loading="lazy" width="640" height="1391" /></div></div></div><div class="tour-panel" id="step-panel-3" data-panel="3"><div class="tour-copy"><span class="oversized-num" aria-hidden="true">04</span><p class="kicker">THE RANGE EXPERIENCE / 04</p><h3>See the group.</h3><p>Mean radius, extreme spread, and group MOA update with every tap, plus your hit rate for the string. Prefer a notebook? Log hits, misses, calls, and corrections by hand.</p><div class="tour-takeaway"><span aria-hidden="true">↳</span> See what your shots are telling you.</div><a class="text-link" href="#cards">Meet your range cards <span aria-hidden="true">↗</span></a></div><div class="tour-media"><span class="screen-caption">A LOOK INSIDE BALLISTICTRACKER</span><div class="phone"><img src="assets/shot-scoring.png" alt="Shot Scoring screen with the shot table and group analysis statistics" loading="lazy" width="640" height="1391" /></div></div></div><div class="tour-panel" id="step-panel-4" data-panel="4"><div class="tour-copy"><span class="oversized-num" aria-hidden="true">05</span><p class="kicker">THE RANGE EXPERIENCE / 05</p><h3>Build the DOPE card.</h3><p>One tap from the session. The app already knows your load. Pick MOA or MIL, G1 or G7, and your full distance table is ready, tied to the range day that earned it.</p><div class="tour-takeaway"><span aria-hidden="true">↳</span> DOPE: Data On Previous Engagements.</div><a class="text-link" href="#cards">Meet your range cards <span aria-hidden="true">↗</span></a></div><div class="tour-media"><span class="screen-caption">A LOOK INSIDE BALLISTICTRACKER</span><div class="phone"><img src="assets/shot-dope-builder.png" alt="DOPE Builder with muzzle velocity and ballistic coefficient seeded from the ammo, MOA and G1 selected" loading="lazy" width="640" height="1391" /></div></div></div><div class="tour-panel" id="step-panel-5" data-panel="5"><div class="tour-copy"><span class="oversized-num" aria-hidden="true">06</span><p class="kicker">THE RANGE EXPERIENCE / 06</p><h3>Prove it next trip.</h3><p>Next trip, the app checks the card against what you actually shot. Every distance you confirm earns its check mark. Anything off gets flagged. Every session hardens the card until it's yours, not the computer's.</p><div class="tour-takeaway"><span aria-hidden="true">↳</span> A prediction becomes your own field-tested record.</div><a class="text-link" href="#cards">Meet your range cards <span aria-hidden="true">↗</span></a></div><div class="tour-media"><span class="screen-caption">A LOOK INSIDE BALLISTICTRACKER</span><div class="phone"><img src="assets/shot-dope-link.png" alt="DOPE card table with the 100 and 300 yard rows marked field-confirmed by a green check" loading="lazy" width="640" height="1391" /></div></div></div></div></div></div></section>  <section id="calculator">
+    <div class="wrap">
+      <div class="split">
+        <div class="split-copy">
+          <div class="kicker">03 / Understand your setup</div>
+          <h2>Know the numbers.<br>See the whole picture.</h2>
+          <p class="muted" style="font-size:18px;">The same ballistic engine behind your live hold and DOPE cards. Your rifle, your load, and today’s conditions, brought into focus.</p>
+          <div class="cards" style="margin-top:26px;">
+            <div class="card">
+              <div class="ico" aria-hidden="true">🎯</div>
+              <h3>Firing solutions</h3>
+              <p>Elevation and windage holds from your firearm, ammo, and conditions, in MOA or MIL, with G1 or G7 drag models.</p>
             </div>
-            <table class="d" style="margin-top:8px">
-              <tr><th class="lab" scope="row">Yards</th><th>100</th><th>200</th><th>300</th><th>400</th><th>500</th><th>600</th><th>700</th></tr>
-              <tr><th class="lab" scope="row">Elev MOA</th><td>0.0</td><td>1.9</td><td>4.6</td><td>7.6</td><td>11.0</td><td>14.8</td><td>19.1</td></tr>
-              <tr><th class="lab" scope="row">Clicks ¼</th><td>0</td><td>7</td><td>18</td><td>31</td><td>44</td><td>59</td><td>77</td></tr>
-              <tr><th class="lab" scope="row">Wind 10</th><td>0.3</td><td>0.7</td><td>1.1</td><td>1.7</td><td>2.4</td><td>3.3</td><td>4.4</td></tr>
-            </table>
-            <div style="display:flex;justify-content:space-between;margin-top:7px;align-items:center">
-              <div class="sub">BASELINE 59°F · 29.92 inHg · 50% · 1,180 FT · <b>2,340 FT DA</b></div>
-              <div class="mark">ballistictracker.com</div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">🔭</div>
+              <h3>Reticle &amp; trajectory</h3>
+              <p>See the hold on a reticle, walk the trajectory chart by distance, and know where your load goes subsonic.</p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">🌤️</div>
+              <h3>Weather &amp; GPS</h3>
+              <p>Live temperature, humidity, pressure, wind, and altitude auto-filled for your location, or enter any value by hand.</p>
             </div>
           </div>
         </div>
+        <div class="split-media">
+          <div class="phones">
+            <div class="phone"><img src="assets/shot-reticle.png" alt="Ballistic calculator reticle view showing an elevation and windage hold" loading="lazy" width="640" height="1387" /></div>
+            <div class="phone"><img src="assets/shot-trajectory.png" alt="Ballistic calculator trajectory chart with supersonic, transonic, and subsonic zones by distance" loading="lazy" width="640" height="1375" /></div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- ============ RANGE DAY ============ -->
-  <section id="range">
+  </section>  <section id="cards">
     <div class="wrap">
       <div class="section-head">
-        <div class="kicker">Built for the range</div>
-        <h2>A range day, start to finish.</h2>
-        <p>Every number below comes out of the app's ballistic engine and your own sessions. Here is how a range day goes from the first tap to a card you can trust.</p>
-      </div>
-      <ol class="steps" role="list">
-        <li class="step">
-          <div class="step-copy">
-            <span class="step-num">01</span>
-            <h3>Start a session</h3>
-            <p>Pick your rifle and load, set the distance, and pull in today's weather and location with one tap. That's the setup. You're on the gun.</p>
-          </div>
-          <div class="step-media"><div class="phone"><img src="assets/shot-session-setup.png" alt="Start Session screen with the session name, firearm, and ammo selected" /></div></div>
-        </li>
-        <li class="step">
-          <div class="step-copy">
-            <span class="step-num">02</span>
-            <h3>Read the live hold</h3>
-            <p>See the elevation and windage to dial for today's exact distance and conditions. If the app doesn't have real numbers for your setup, it says so instead of guessing.</p>
-          </div>
-          <div class="step-media"><div class="phone"><img src="assets/shot-workbench.png" alt="Range session screen with the live hold showing elevation and windage to dial" /></div></div>
-        </li>
-        <li class="step">
-          <div class="step-copy">
-            <span class="step-num">03</span>
-            <h3>Mark the target</h3>
-            <p>Photograph the target and tap each hole. The app measures every shot from center for you. No ruler, no calipers, no math at the bench.</p>
-          </div>
-          <div class="step-media"><div class="phone"><img src="assets/shot-markup.png" alt="Shot Scoring in Touch mode with the Photos, Camera, and Mark Target controls for a target photo" /></div></div>
-        </li>
-        <li class="step">
-          <div class="step-copy">
-            <span class="step-num">04</span>
-            <h3>See the group</h3>
-            <p>Mean radius, extreme spread, and group MOA update with every tap, plus your hit rate for the string. Prefer a notebook? Log hits, misses, calls, and corrections by hand.</p>
-          </div>
-          <div class="step-media"><div class="phone"><img src="assets/shot-scoring.png" alt="Shot Scoring screen with the shot table and group analysis statistics" /></div></div>
-        </li>
-        <li class="step">
-          <div class="step-copy">
-            <span class="step-num">05</span>
-            <h3>Build the DOPE card</h3>
-            <p>One tap from the session. The app already knows your load. Pick MOA or MIL, G1 or G7, and your full distance table is ready, tied to the range day that earned it.</p>
-          </div>
-          <div class="step-media"><div class="phone"><img src="assets/shot-dope-builder.png" alt="DOPE Builder with muzzle velocity and ballistic coefficient seeded from the ammo, MOA and G1 selected" /></div></div>
-        </li>
-        <li class="step">
-          <div class="step-copy">
-            <span class="step-num">06</span>
-            <h3>Prove it next trip</h3>
-            <p>Next trip, the app checks the card against what you actually shot. Every distance you confirm earns its check mark. Anything off gets flagged. Every session hardens the card until it's yours, not the computer's.</p>
-          </div>
-          <div class="step-media"><div class="phone"><img src="assets/shot-dope-link.png" alt="DOPE card table with the 100 and 300 yard rows marked field-confirmed by a green check" /></div></div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ============ RANGE CARDS ============ -->
-  <section id="cards">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="kicker">Print it. Tape it. Shoot it.</div>
-        <h2>Range cards built from your data.</h2>
+        <div class="kicker">04 / From screen to field</div>
+        <h2>Good data belongs in your bag.</h2>
         <p>Four cards, built from your own sessions. Two DOPE references for the stock and the bag. Two session records for the bench. They arrive in the range-card update after launch: preview every design free, print and export with Pro.</p>
       </div>
-      <div class="gallery">
+      <div class="gallery" aria-label="Sample range card designs">
 
         <figure>
           <div class="paper-stage">
@@ -421,55 +317,16 @@
 
       </div>
     </div>
-  </section>
-
-  <!-- ============ CALCULATOR ============ -->
-  <section id="calculator">
-    <div class="wrap">
-      <div class="split">
-        <div class="split-copy">
-          <div class="kicker">The math underneath</div>
-          <h2>A firing solution for every distance.</h2>
-          <p class="muted" style="font-size:18px;">The same engine behind your live hold and your DOPE cards, ready any time you need a number, with today's weather and your own rifle and load.</p>
-          <div class="cards" style="margin-top:26px;">
-            <div class="card">
-              <div class="ico" aria-hidden="true">🎯</div>
-              <h3>Firing solutions</h3>
-              <p>Elevation and windage holds from your firearm, ammo, and conditions, in MOA or MIL, with G1 or G7 drag models.</p>
-            </div>
-            <div class="card">
-              <div class="ico" aria-hidden="true">🔭</div>
-              <h3>Reticle &amp; trajectory</h3>
-              <p>See the hold on a reticle, walk the trajectory chart by distance, and know where your load goes subsonic.</p>
-            </div>
-            <div class="card">
-              <div class="ico" aria-hidden="true">🌤️</div>
-              <h3>Weather &amp; GPS</h3>
-              <p>Live temperature, humidity, pressure, wind, and altitude auto-filled for your location, or enter any value by hand.</p>
-            </div>
-          </div>
-        </div>
-        <div class="split-media">
-          <div class="phones">
-            <div class="phone"><img src="assets/shot-reticle.png" alt="Ballistic calculator reticle view showing an elevation and windage hold" /></div>
-            <div class="phone"><img src="assets/shot-trajectory.png" alt="Ballistic calculator trajectory chart with supersonic, transonic, and subsonic zones by distance" /></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ COLLECTION ============ -->
-  <section id="collection">
+  </section>  <section id="collection">
     <div class="wrap">
       <div class="split flip">
         <div class="split-media">
-          <div class="phone"><img src="assets/shot-dashboard.png" alt="BallisticTracker dashboard with Ballistic Calcs, Inventory, Provenance, Insurance, and Range Sessions tiles" /></div>
+          <div class="phone"><img src="assets/shot-dashboard.png" alt="BallisticTracker dashboard with Ballistic Calcs, Inventory, Provenance, Insurance, and Range Sessions tiles" loading="lazy" width="640" height="1391" /></div>
         </div>
         <div class="split-copy">
-          <div class="kicker">Know what you own</div>
-          <h2>Your collection, documented.</h2>
-          <p class="muted" style="font-size:18px;">More than a range tool. A private record of every firearm you own and everything that matters about it.</p>
+          <div class="kicker">05 / Everything has its place</div>
+          <h2>Know your gear.<br>Keep its story.</h2>
+          <p class="muted" style="font-size:18px;">The rifle you reach for. The load you trust. The paperwork you need. Give everything in your collection a place to call home.</p>
           <div class="cards" style="margin-top:26px;">
             <div class="card">
               <div class="ico" aria-hidden="true">🗂️</div>
@@ -479,7 +336,7 @@
             <div class="card">
               <div class="ico" aria-hidden="true">📷</div>
               <h3>Barcode scan</h3>
-              <p>Scan the box. The ammo lands in your inventory with its ballistic data, no typing.</p>
+              <p>Scan an ammo barcode to add a catalog match and its ballistic data to your inventory.</p>
             </div>
             <div class="card">
               <div class="ico" aria-hidden="true">📜</div>
@@ -495,10 +352,7 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ============ PRIVACY ============ -->
-  <section id="privacy">
+  </section>  <section id="privacy">
     <div class="wrap">
       <div class="band">
         <div class="ico-lg">🛡️</div>
@@ -513,15 +367,12 @@
         <p style="margin-top:20px;font-size:15px;"><a href="privacy.html">Read the full privacy policy →</a></p>
       </div>
     </div>
-  </section>
-
-  <!-- ============ PRICING ============ -->
-  <section id="pricing">
+  </section>  <section id="pricing">
     <div class="wrap">
       <div class="section-head center">
-        <div class="kicker">Simple plans</div>
-        <h2>Free to start.</h2>
-        <p>Three ways in. We're still shaping what each one includes, so consider this the outline, not the fine print.</p>
+        <div class="kicker">06 / Find your fit</div>
+        <h2>A place for every shooter.</h2>
+        <p>Free, Pro, or a limited Founder’s Lifetime membership. Final pricing and inclusions are still being shaped.</p>
       </div>
       <div class="plans">
         <div class="plan">
@@ -540,15 +391,12 @@
       </div>
       <p class="plans-note">(We're still narrowing down exactly what each tier includes and what it will cost.) <span class="cta-waitlist">Join the waitlist to hear first when the limited Founder's Lifetime run opens.</span></p>
     </div>
-  </section>
-
-  <!-- ============ WHERE THIS IS GOING ============ -->
-  <section id="next" class="forward">
+  </section>  <section id="next" class="forward">
     <div class="wrap">
       <div class="section-head">
-        <div class="kicker">Where this is going</div>
-        <h2>Less typing at the bench. More proof on the card.</h2>
-        <p>The app in review is the foundation. Here is what we build next. Every item started as a wish at our own bench. Every item keeps one promise: your records stay on your phone unless you choose otherwise, and nothing spends your money quietly.</p>
+        <div class="kicker">On the horizon</div>
+        <h2>A little less typing. A lot more range time.</h2>
+        <p>The current app is the foundation. These features are planned for future updates, with your records on your phone unless you choose otherwise, and clear approval for cloud costs.</p>
       </div>
       <div class="cards">
             <div class="card">
@@ -573,16 +421,11 @@
             </div>
       </div>
     </div>
-  </section>
-
-  <!-- ============ THE MISSING MIDDLE ============ -->
-  <section id="router">
+  </section>  <section id="router">
     <div class="wrap">
-      <div class="router-band">
-        <div class="kicker">The missing middle</div>
-        <h2>AI that knows when to stay local.</h2>
-        <p class="lead">Most AI apps pick a side: everything on the device, or everything in the cloud with your data and your bill riding along. We built the layer in between. Local when it&#x27;s good enough. Cloud when it counts. Receipts either way.</p>
-        <p class="nate">The gap is public knowledge by now. AI runs on your phone and AI runs in the cloud, but nobody routes work between them cleanly, nobody has made local AI feel finished, and nobody shows what a hybrid setup costs or whether local quality held. We built our answer to that gap.</p>
+      <details class="router-band"><summary><span><span class="kicker">Our approach to coming AI features</span><strong>Local by default. You stay in control.</strong></span><span class="detail-plus" aria-hidden="true">+</span></summary><div class="router-content">
+        <p class="lead">Our planned AI features start on your device. When a task needs the cloud, you control when it runs and can see what it costs. These are the promises guiding that work.</p>
+
         <p class="router-line">Local when it's good enough. <b>Cloud when it counts.</b> Receipts either way.</p>
         <div class="promises">
           <div class="promise">
@@ -602,18 +445,15 @@
           </div>
         </div>
         <p class="closing">BallisticTracker&#x27;s coming AI features will run on that layer. Reading an ammo box, finding holes in a target, checking a load: on your device by default, in the cloud only when it clearly earns its cost. You will always see what it cost. That is where we are headed, and we will say so when it ships.</p>
-      </div>
+      </div></details>
     </div>
-  </section>
-
-  <!-- ============ WORK WITH US ============ -->
-  <section id="partners">
+  </section>  <section id="partners">
     <div class="wrap">
       <div class="partners">
         <div class="head">
           <div>
-            <div class="kicker">Work with us</div>
-            <h2>Small company. Fast decisions. We answer our own email.</h2>
+            <div class="kicker">For ranges, instructors &amp; makers</div>
+            <h2>Built around the people who show up.</h2>
           </div>
           <p class="body">BallisticTracker is built for shooters who show up with a plan, log every round, and confirm their data. They are the people who shoot at your range, take your instruction, and buy your ammo and glass. We will reach them without reaching into their data: no ads, no cross-app tracking, no selling who they are. We are pre-launch, so the people who come in first get the most say in what we build.</p>
         </div>
@@ -645,36 +485,21 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ============ FINAL CTA ============ -->
-  <section class="cta-final">
-    <div class="wrap">
-      <div class="box">
-        <span class="eyebrow cta-waitlist"><span class="dot"></span> Coming soon</span>
-        <span class="eyebrow cta-launched"><span class="dot"></span> Available now</span>
-        <h2 class="cta-waitlist">Get on the list before the range opens.</h2>
-        <h2 class="cta-launched">Get on the range with better data.</h2>
-        <p class="cta-waitlist">One email when BallisticTracker hits the App Store. Founder's Lifetime goes to the waitlist first.</p>
-        <p class="cta-launched">Download BallisticTracker and bring real data to your next range day.</p>
-        <div class="waitlist cta-waitlist" style="display:inline-block;text-align:left;">
-          <div class="sender-form-field" data-sender-form-id="epY3pp"></div>
-          <a class="btn btn-primary waitlist-fallback" href="#waitlist">Join the waitlist</a>
-        </div>
-        <a class="btn btn-primary cta-launched" href="https://apps.apple.com/app/idREPLACE-ME"><svg class="apple" viewBox="0 0 384 512" width="15" height="17" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Download on the App Store</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FOOTER ============ -->
-  <footer>
+  </section><section id="questions" class="questions"><div class="wrap faq-layout"><div><p class="kicker">A few things to know</p><h2>Before your<br>next trip.</h2><a class="text-link" href="support.html">Visit the support desk <span aria-hidden="true">↗</span></a></div><div class="faq-list">
+<details><summary>Who is BallisticTracker for?<span aria-hidden="true">+</span></summary><p>Hunters preparing at the range, sport and competitive shooters documenting their results, and anyone starting to build better range habits. It brings session records, ballistics, and collection management together.</p></details>
+<details><summary>What does DOPE mean?<span aria-hidden="true">+</span></summary><p>Data On Previous Engagements. Think of it as your setup’s reference notes: the information you use at different distances, then confirm against the results of your own range sessions.</p></details>
+<details><summary>When can I get the app?<span aria-hidden="true">+</span></summary><p class="cta-waitlist">BallisticTracker is coming to the App Store. Join the waitlist for an email when it launches and first access to the limited Founder’s Lifetime offer. A launch date is not yet confirmed.</p><p class="cta-launched">BallisticTracker is available on the App Store for iPhone and iPad.</p></details>
+<details><summary>Which devices does it support?<span aria-hidden="true">+</span></summary><p>iPhone and iPad running iOS 26 or later. Live weather and range location work best with an internet connection and Location Services enabled.</p></details>
+<details><summary>Are the printable cards available at launch?<span aria-hidden="true">+</span></summary><p>Printable range cards are planned for an update after launch. Every design will be free to preview; printing and exporting cards will require Pro. Session reports already support PDF export.</p></details>
+</div></div></section><section class="cta-final" id="waitlist"><div class="wrap signup-grid"><div><p class="kicker">Your next range day starts here</p><h2 class="cta-waitlist">Be ready<br>when we are.</h2><h2 class="cta-launched">Make the next<br>one count.</h2><p class="cta-waitlist">Get the launch email. Get first access to Founder’s Lifetime. Then get back outside.</p><p class="cta-launched">Bring your gear, your sessions, and your progress together.</p></div><div class="signup-form"><div class="signup-label"><span class="status-dot"></span><span class="cta-waitlist">THE BALLISTICTRACKER EARLY ACCESS LIST</span><span class="cta-launched">BALLISTICTRACKER FOR iPHONE &amp; iPAD</span></div><div class="waitlist cta-waitlist"><div class="sender-form-field" data-sender-form-id="epY3pp"></div><p class="waitlist-loading" role="status">Loading the signup form…</p><div class="waitlist-fallback"><p>The signup form couldn’t load. You can join by email.</p><a class="btn btn-primary" href="mailto:support@ballistictracker.com?subject=Notify%20me%20when%20BallisticTracker%20launches">Email us to join <span aria-hidden="true">↗</span></a></div><noscript><p>Join by emailing <a href="mailto:support@ballistictracker.com?subject=Notify%20me%20when%20BallisticTracker%20launches">support@ballistictracker.com</a>.</p></noscript><p class="waitlist-note">One email when it ships. No spam. Unsubscribe anytime.<br>Signing up? Watch for your confirmation email.</p></div><a class="btn btn-primary cta-launched" href="https://apps.apple.com/app/idREPLACE-ME">Download on the App Store <span aria-hidden="true">↗</span></a><p class="signup-fine">For iPhone &amp; iPad · iOS 26 or later<br><a href="privacy.html">Your privacy matters to us.</a></p></div></div></section>
+</main>  <footer>
     <div class="wrap">
       <div class="foot-grid">
         <div>
           <div class="foot-brand"><img src="assets/logo.png" alt="" /> Ballistic<span style="color:var(--accent)">Tracker</span></div>
-          <p style="margin:12px 0 0;max-width:34ch;">Range sessions, DOPE cards, and a ballistic calculator, plus collection management, for iPhone &amp; iPad.</p>
+          <p style="margin:12px 0 0;max-width:34ch;">Prepare. Record. Improve.<br>Your range companion for iPhone &amp; iPad.</p>
         </div>
-        <div class="foot-links">
+        <nav class="foot-links" aria-label="Footer navigation">
           <a href="#range">Range</a>
           <a href="#cards">Cards</a>
           <a href="#calculator">Calculator</a>
@@ -685,7 +510,7 @@
           <a href="privacy.html">Privacy</a>
           <a href="support.html">Support</a>
           <a href="mailto:support@ballistictracker.com">Contact</a>
-        </div>
+        </nav>
       </div>
       <p class="foot-fine">
         © 2026 Vega LLC. BallisticTracker is a product of Vega LLC. All trademarks are the property of their respective owners; BallisticTracker is not affiliated with or endorsed by any firearm or ammunition manufacturer. Always follow all applicable firearm laws and safe handling practices.
